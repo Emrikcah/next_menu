@@ -6,7 +6,7 @@ const Card = ({ data }) => {
    return (
       <section className="mb-10 sm:mb-0 lg:flex lg:justify-between ">
          <div className="relative w-full lg:w-48 h-40 border-4 border-brown rounded mb-5 lg:mb-0" >
-            <Image src={img} layout="fill" objectFit="cover" />
+            <Image src={img} alt={title} layout="fill" objectFit="cover" />
          </div>
          <div className="lg:w-80 divide-y divide-dashed divide-darkBlue">
             <header className="flex justify-between">

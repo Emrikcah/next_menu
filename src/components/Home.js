@@ -1,10 +1,32 @@
 import Head from "next/head";
 import data from "data/data";
+import { useState } from "react";
 
 import Header from "./Header";
 import CardContainer from "./CardContainer";
 
+//loop over the data and only return unique categories
+//remove repeating values by using Set. Set only returns unique values
+//Set will return an object
+const allCategories = ['all', ...new Set( data.map((item)=> item.category))];
+
+
 export function Home() {
+   const [menuItems, setMenuItems] = useState(data);
+   const [categories, setCategories] = useState(allCategories);
+
+   //filter the items and pass this function to Header component
+   const filteredItems = (category) => {
+      //if category equals all set setMenuItems to data
+      if (category === 'all') {
+         setMenuItems(data);
+         return;
+      }
+     const newItems = data.filter(item=> item.category === category);
+     setMenuItems(newItems);
+   };
+   
+   
    return (
       <div className="bg-grey min-h-screen">
          <Head>
@@ -14,12 +36,11 @@ export function Home() {
          </Head>
 
          <main className="container mx-auto p-5 ">
-            <Header />
-            <CardContainer data={data} />
+            <Header categories={categories} filteredItems={filteredItems} />
+            <CardContainer menuItems={menuItems}  />
          </main>
       </div>
    );
 }
 
-//create the html container with custom container size in tailwind
-//custom colors in tailwind
+

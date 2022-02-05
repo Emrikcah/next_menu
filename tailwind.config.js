@@ -10,11 +10,13 @@ module.exports = {
       }
     },
     colors:{
+      transparent: 'transparent',
       'grey': '#f1f5f8',
       'brown': '#c59d5f',
       'liteBlue': '#617d98',
       'darkBlue': '#102a42',
       'black': '#000000',
+      'white': '#fff'
     },
     extend: {},
   },
